@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+:root {
+  /* COLORS */
+  --beige: rgb(255, 228, 196);
+  --black: rgb(29, 29, 29);
+  /* FONT */
+  --font: "Open Sans", system-ui;
+  --small-font: "Major Mono Display", system-ui;
+  /* CURSOR */
+}
+
+body {
+  background-color: var(--beige);
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: none;
+}
+
+/* CURSOR */
+
+.cursor-dot {
+  width: 15px;
+  height: 15px;
+  background-color: var(--beige);
+  mix-blend-mode: difference;
+}
+
+.cursor-outline {
+  width: 40px;
+  height: 40px;
+  background-color: var(--beige);
+  mix-blend-mode: difference;
+  transition: 0.2s ease-in;
+}
+
+.cursor-dot,
+.cursor-outline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* HERO SECTION */
+
+.hero-section {
+  width: 80%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-title {
+  font-size: 13.5vw;
+  user-select: none;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: var(--font);
+}
+
+.hero-surname {
+  letter-spacing: 1.3vw;
+}
+
+/* HERO SLIDER */
