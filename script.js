@@ -1,8 +1,10 @@
-//? FUNZIONE PER IL MOUSE CUSTOM
+//* FUNZIONE MOUSE CUSTOM
 
 const cursorDot = document.querySelector(".cursor-dot");
 const titles = document.querySelectorAll(".hero-title");
-const slider = document.querySelector(".hero-slider");
+const scrollDown = document.querySelector(".scroll-down");
+const sidebarItem = document.querySelectorAll(".sidebar-item");
+const themeSwitcher = document.querySelector(".theme-switcher");
 
 window.addEventListener("mousemove", function (e) {
   const posX = e.clientX;
@@ -13,15 +15,103 @@ window.addEventListener("mousemove", function (e) {
 
   titles.forEach((element) => {
     element.addEventListener("mouseover", function () {
-      cursorDot.style.width = "60px";
-      cursorDot.style.height = "60px";
-      cursorDot.style.transition = ".1s ease";
+      cursorDot.style.animation = "cursorAnimIn 0.2s linear forwards";
     });
 
     element.addEventListener("mouseout", function () {
-      cursorDot.style.width = "30px";
-      cursorDot.style.height = "30px";
-      cursorDot.style.transition = ".1s ease";
+      cursorDot.style.animation = "cursorAnimOut 0.2s linear forwards";
     });
   });
+
+  sidebarItem.forEach((element) => {
+    element.addEventListener("mouseover", function () {
+      cursorDot.style.animation = "cursorAnimIn 0.2s linear forwards";
+    });
+
+    element.addEventListener("mouseout", function () {
+      cursorDot.style.animation = "cursorAnimOut 0.2s linear forwards";
+    });
+  });
+
+  scrollDown.addEventListener("mouseover", function () {
+    cursorDot.style.animation = "cursorAnimIn 0.2s linear forwards";
+  });
+
+  scrollDown.addEventListener("mouseout", function () {
+    cursorDot.style.animation = "cursorAnimOut 0.2s linear forwards";
+  });
+
+  themeSwitcher.addEventListener("mouseover", function () {
+    cursorDot.style.animation = "cursorAnimIn 0.2s linear forwards";
+  });
+
+  themeSwitcher.addEventListener("mouseout", function () {
+    cursorDot.style.animation = "cursorAnimOut 0.2s linear forwards";
+  });
+});
+
+//* THEME SWITCHER
+
+// Imposta un tema di default se non è già presente nel localStorage
+if (localStorage.getItem("theme") === null) {
+  localStorage.setItem("theme", "dark");
+}
+
+// Funzione per applicare il tema corrente
+function applyTheme(theme) {
+  if (theme === "dark") {
+    themeSwitcher.innerHTML = '<i class="bi bi-moon-fill"></i>';
+    cursorDot.style.backgroundColor = "var(--beige)";
+    document.documentElement.style.setProperty("--beige", "rgb(255,237,216)");
+    document.documentElement.style.setProperty("--black", "rgb(35,35,35)");
+  } else if (theme === "light") {
+    themeSwitcher.innerHTML = '<i class="bi bi-brightness-high-fill"></i>';
+    cursorDot.style.backgroundColor = "var(--black)";
+    document.documentElement.style.setProperty("--beige", "rgb(35,35,35)");
+    document.documentElement.style.setProperty("--black", "rgb(255,237,216)");
+  }
+}
+
+// Applica il tema quando la pagina viene caricata
+applyTheme(localStorage.getItem("theme"));
+
+// Gestore per il click sullo switcher
+themeSwitcher.addEventListener("click", () => {
+  let currentTheme = localStorage.getItem("theme");
+
+  // Cambia tema a seconda del tema corrente
+  if (currentTheme === "dark") {
+    localStorage.setItem("theme", "light");
+    applyTheme("light");
+  } else {
+    localStorage.setItem("theme", "dark");
+    applyTheme("dark");
+  }
+});
+
+//* NAVBAR ITEMS
+
+const aboutMe = document.querySelector(".about-me");
+const aboutMeClick = document.querySelector(".about-me-click");
+const aboutMeContext = document.querySelector(".about-me-context");
+
+aboutMeClick.addEventListener("click", () => {
+  // Usa getComputedStyle per ottenere lo stile attuale
+  const aboutMeContextDisplay = getComputedStyle(aboutMeContext).display;
+
+  if (aboutMeContextDisplay === "none") {
+    aboutMe.style.height = "550px";
+    aboutMeContext.style.height = "auto";
+    setTimeout(() => {
+      aboutMeContext.style.display = "block";
+      aboutMeContext.style.marginTop = "25px";
+    }, 150);
+  } else {
+    aboutMe.style.height = "90px";
+    aboutMeContext.style.height = "0px";
+    aboutMeContext.style.display = "none";
+    setTimeout(() => {
+      aboutMeContext.style.marginTop = "0px";
+    }, 150);
+  }
 });

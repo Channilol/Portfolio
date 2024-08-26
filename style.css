@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Teko:wght@300..700&display=swap");
 
 * {
   margin: 0;
@@ -9,23 +9,57 @@
 
 :root {
   /* COLORS */
-  --beige: rgb(255, 228, 196);
-  --black: rgb(29, 29, 29);
+  --beige: rgb(255, 237, 216);
+  --black: rgb(35, 35, 35);
   /* FONT */
   --font: "Open Sans", system-ui;
+  --alter-font: "Teko", sans-serif;
   --small-font: "Major Mono Display", system-ui;
 }
 
 body {
-  background-color: var(--beige);
+  background-color: var(--black);
   min-height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  cursor: none;
   overflow-x: hidden;
+  font-family: var(--small-font);
+  color: var(--beige);
+  scroll-behavior: smooth;
+  transition: 0.5s ease-in-out;
+  cursor: none;
+}
+
+/* ************* THEME SWITCHER ************* */
+
+.hero-name-middle {
+  position: relative;
+}
+
+.theme-switcher {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  font-size: 50px;
+  z-index: 1;
+}
+
+/* ************* SCROLLBAR ************* */
+
+::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(255, 255, 255, 0.1);
+  border-radius: 3px;
 }
 
 /* ************* CURSOR ************* */
@@ -33,7 +67,7 @@ body {
 .cursor-dot {
   width: 30px;
   height: 30px;
-  background-color: var(--beige);
+  background-color: var(--black);
   position: fixed;
   top: 0;
   left: 0;
@@ -42,6 +76,66 @@ body {
   z-index: 100;
   pointer-events: none;
   mix-blend-mode: difference;
+}
+
+@keyframes cursorAnimIn {
+  from {
+    width: 30px;
+    height: 30px;
+  }
+  to {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@keyframes cursorAnimOut {
+  from {
+    width: 80px;
+    height: 80px;
+  }
+  to {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* ************* SCROLL DOWN ************* */
+
+@keyframes mouseAnim {
+  from {
+    opacity: 0.5;
+    transform: translateY(0px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(25px);
+  }
+}
+
+.scroll-down {
+  position: absolute;
+  bottom: 40px;
+  right: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bi-mouse-fill {
+  font-size: 50px;
+  margin-bottom: 15px;
+  animation: mouseAnim 2s infinite alternate ease-in-out;
+}
+
+.bi-caret-down-fill {
+  margin: -8px 0;
+  font-size: 25px;
+}
+
+.bi-caret-down-fill:nth-child(2) {
+  animation: mouseAnim 2s infinite alternate ease-in-out;
 }
 
 /* ************* HERO SECTION ************* */
@@ -78,7 +172,8 @@ body {
 }
 
 .hero-section {
-  width: 80%;
+  width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -87,11 +182,14 @@ body {
 }
 
 .hero-title {
-  font-size: 13.5vw;
+  display: inline-block;
+  font-size: 200px;
+
   user-select: none;
   white-space: nowrap;
-  line-height: 1;
-  font-family: var(--font);
+  font-family: var(--small-font);
+  font-weight: 800;
+  color: var(--beige);
 }
 
 .hero-name {
@@ -99,7 +197,7 @@ body {
 }
 
 .hero-surname {
-  letter-spacing: 1.3vw;
+  letter-spacing: 1vw;
   animation: heroSurname 0.6s ease-in-out;
 }
 
@@ -115,25 +213,112 @@ body {
 }
 
 .hero-slider {
+  position: relative;
   overflow: hidden;
-  padding: 30px 0;
+  padding: 25px 0;
+  margin: 20px 0 0 0;
   white-space: nowrap;
+  background-color: var(--beige);
   animation: heroSlider 1.5s ease-in-out;
+}
+
+.hero-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: aqua;
+  height: 100%;
+  width: 250px;
 }
 
 .skill-logos {
   display: inline-block;
-  animation: 9s slide infinite linear;
+  animation: 15s slide infinite linear;
 }
 
 .skill-logos img {
-  width: 100px;
-  height: 100px;
-  margin-right: 25px;
+  width: 125px;
+  height: 125px;
+  margin-right: 75px;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: rgb(255, 237, 216);
 }
 
-/* scroll down img */
+/* ************* NAVBAR ************* */
 
-.scrolldown-img {
-  width: 100px;
+#page-navbar {
+  margin: 50px 0;
+  width: 100vw;
+}
+
+.sidebar-item:first-of-type {
+  border-top: 2px solid var(--beige);
+}
+
+.sidebar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90px;
+  font-size: 40px;
+  text-align: center;
+  border-bottom: 2px solid var(--beige);
+  transition: 0.3s ease-in-out;
+}
+
+.sidebar-item:hover {
+  background-color: var(--beige);
+  color: var(--black);
+}
+
+.about-me-click,
+.portfolio-click,
+.contacts-click {
+  width: 100vw;
+}
+
+.about-me-context,
+.portfolio-context,
+.contacts-context {
+  width: 60%;
+  display: none;
+  text-align: start;
+  transition: 0.1s ease-in-out;
+  transition: margin-top 0.2s ease-in-out;
+}
+
+.about-me-context button {
+  width: 350px;
+  margin-top: 50px;
+  padding: 15px 0;
+  border-radius: 25px;
+  color: var(--black);
+  background-color: var(--beige);
+  border: 2px solid var(--black);
+  font-family: var(--small-font);
+  font-weight: 800;
+  font-size: 30px;
+  letter-spacing: 1px;
+  align-self: end;
+  transition: 0.2s ease-in-out;
+}
+
+.about-me-context button:hover {
+  color: var(--beige);
+  background-color: var(--black);
+  cursor: none;
+}
+
+/* ************* FOOTER ************* */
+
+footer {
+  margin-top: 50px;
+  height: 50px;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid var(--beige);
 }

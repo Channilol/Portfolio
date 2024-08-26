@@ -4,17 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Francesco Cannizzo</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/lenis@1.1.11/dist/lenis.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://unpkg.com/lenis@1.1.11/dist/lenis.min.js"
+      defer
+    ></script>
     <script src="script.js" defer></script>
   </head>
   <body>
+    <!-- THEME SWITCHER -->
+    <div class="theme-switcher">
+      <i class="bi bi-moon-fill"></i>
+    </div>
     <!-- MOUSE CUSTOM -->
     <div class="cursor-dot"></div>
+    <!-- SCROLL DOWN DIV -->
+    <div class="scroll-down" onclick="window.location.href='#page-navbar'">
+      <i class="bi bi-mouse-fill"></i>
+      <i class="bi bi-caret-down-fill"></i>
+    </div>
     <!-- HERO SECTION -->
     <div class="hero-section">
-      <h1 class="hero-title hero-name">FRANCESCO</h1>
+      <div class="hero-name-div">
+        <h1 class="hero-title hero-name">francesco</h1>
+      </div>
       <!-- HERO SLIDER -->
       <div class="hero-slider">
+        <div class="hero-left"></div>
+        <div class="hero-right"></div>
         <div class="skill-logos">
           <img src="assets\svg_logos\html.svg" />
           <img src="assets\svg_logos\css.svg" />
@@ -61,13 +86,46 @@
           <img src="assets\svg_logos\git.svg" />
         </div>
       </div>
-      <h1 class="hero-title hero-surname">CANNIZZO</h1>
+      <h1 class="hero-title hero-surname">cannizzo</h1>
     </div>
-    <div>
-      <img
-        class="scrolldown-img"
-        src="assets\images\scrolldown_trasparent.gif"
-      />
+    <div id="page-navbar">
+      <div class="sidebar-item about-me">
+        <h2 class="about-me-click">about me</h2>
+        <div class="about-me-context">
+          hi! my name is francesco cannizzo, and i'm a junior fullstack
+          developer!
+          <br />
+          i also love graphic design, videogames and animals.
+          <br />
+          i'm currently working with dart & flutter and i'm currently not open
+          to collaborations.
+          <br />
+          <a href="assets\svg_logos\dart.svg" download="Francesco_Cannizzo_CV"
+            ><button>download cv</button></a
+          >
+        </div>
+      </div>
+      <div class="sidebar-item portfolio">
+        <h2 class="portfolio-click">portfolio</h2>
+        <div class="portfolio-context">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, eos!
+          Reprehenderit quas tenetur excepturi nulla placeat sint laborum?
+          Labore laboriosam sit saepe doloremque non voluptas fuga facere
+          eligendi perferendis praesentium.
+        </div>
+      </div>
+      <div class="sidebar-item contacts">
+        <h2 class="contacts-click">contacts</h2>
+        <div class="contacts-context">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
+          ipsam enim consectetur explicabo, suscipit, sunt perferendis atque
+          rerum est cumque officia inventore temporibus. Incidunt necessitatibus
+          alias eius, quaerat earum quod!
+        </div>
+      </div>
     </div>
+    <footer>
+      <address>2024 &copy; francesco cannizzo - all rights reserved</address>
+    </footer>
   </body>
 </html>
