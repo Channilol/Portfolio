@@ -324,6 +324,13 @@ body {
   cursor: none;
 }
 
+/* portfolio */
+
+.portfolio-open {
+  height: 400px;
+  padding: 10px 0;
+}
+
 /* contacts */
 
 .contacts {
@@ -348,7 +355,7 @@ body {
   display: flex;
   flex-direction: column;
   list-style: none;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .contacts-context ul li a,
@@ -357,7 +364,8 @@ body {
   flex-direction: column;
   align-items: center;
   text-decoration: none;
-  padding: 10px 20px;
+  padding: 10px 0;
+  width: 225px;
   border-radius: 9px;
   transition: 0.2s ease-in-out;
   font-weight: 600;

@@ -1,4 +1,4 @@
-//* FUNZIONE MOUSE CUSTOM
+//! FUNZIONE MOUSE CUSTOM
 
 const cursorDot = document.querySelector(".cursor-dot");
 const titles = document.querySelectorAll(".hero-title");
@@ -50,14 +50,12 @@ window.addEventListener("mousemove", function (e) {
   });
 });
 
-//* THEME SWITCHER
+//! THEME SWITCHER
 
-// Imposta un tema di default se non è già presente nel localStorage
 if (localStorage.getItem("theme") === null) {
   localStorage.setItem("theme", "dark");
 }
 
-// Funzione per applicare il tema corrente
 function applyTheme(theme) {
   if (theme === "dark") {
     themeSwitcher.innerHTML = '<i class="bi bi-moon-fill"></i>';
@@ -72,14 +70,11 @@ function applyTheme(theme) {
   }
 }
 
-// Applica il tema quando la pagina viene caricata
 applyTheme(localStorage.getItem("theme"));
 
-// Gestore per il click sullo switcher
 themeSwitcher.addEventListener("click", () => {
   let currentTheme = localStorage.getItem("theme");
 
-  // Cambia tema a seconda del tema corrente
   if (currentTheme === "dark") {
     localStorage.setItem("theme", "light");
     applyTheme("light");
@@ -89,7 +84,7 @@ themeSwitcher.addEventListener("click", () => {
   }
 });
 
-//* SCROLL TO NAVBAR
+//! SCROLL TO NAVBAR
 
 function scrollToNavbar() {
   const navbar = document.querySelector("#page-navbar");
@@ -99,18 +94,21 @@ function scrollToNavbar() {
   });
 }
 
-//* NAVBAR ITEMS
+//! NAVBAR ITEMS
 
 const aboutMe = document.querySelector(".about-me");
 const aboutMeClick = document.querySelector(".about-me-click");
 const aboutMeContext = document.querySelector(".about-me-context");
+
+const portfolio = document.querySelector(".portfolio");
+const portfolioClick = document.querySelector(".portfolio-click");
+const portfolioContext = document.querySelector(".portfolio-context");
 
 const contacts = document.querySelector(".contacts");
 const contactsClick = document.querySelector(".contacts-click");
 const contactsContext = document.querySelector(".contacts-context");
 
 aboutMeClick.addEventListener("click", () => {
-  // Usa getComputedStyle per ottenere lo stile attuale
   const aboutMeContextDisplay = getComputedStyle(aboutMeContext).display;
 
   if (aboutMeContextDisplay === "none") {
@@ -120,6 +118,7 @@ aboutMeClick.addEventListener("click", () => {
       aboutMeContext.style.display = "block";
       aboutMeContext.style.marginTop = "25px";
       contactsContext.style.marginTop = "0px";
+      portfolioContext.style.marginTop = "0px";
 
       setTimeout(() => {
         const offset =
@@ -130,15 +129,59 @@ aboutMeClick.addEventListener("click", () => {
         });
       }, 200);
     }, 150);
+
     contacts.classList.remove("contacts-open");
     contactsContext.style.height = "0px";
     contactsContext.style.display = "none";
+
+    portfolio.classList.remove("portfolio-open");
+    portfolioContext.style.height = "0px";
+    portfolioContext.style.display = "none";
   } else {
     aboutMe.classList.remove("about-me-open");
     aboutMeContext.style.height = "0px";
     aboutMeContext.style.display = "none";
     setTimeout(() => {
       aboutMeContext.style.marginTop = "0px";
+    }, 150);
+  }
+});
+
+portfolio.addEventListener("click", () => {
+  const portfolioContextDisplay = getComputedStyle(portfolioContext).display;
+
+  if (portfolioContextDisplay === "none") {
+    portfolio.classList.add("portfolio-open");
+    portfolioContext.style.height = "auto";
+    setTimeout(() => {
+      portfolioContext.style.display = "block";
+      portfolioContext.style.marginTop = "25px";
+      aboutMeContext.style.marginTop = "0px";
+      contactsContext.style.marginTop = "0px";
+
+      setTimeout(() => {
+        const offset =
+          portfolioClick.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: offset - 25,
+          behavior: "smooth",
+        });
+      }, 200);
+    }, 150);
+
+    contacts.classList.remove("contacts-open");
+    contactsContext.style.height = "0px";
+    contactsContext.style.display = "none";
+
+    aboutMe.classList.remove("about-me-open");
+    aboutMeContext.style.height = "0px";
+    aboutMeContext.style.display = "none";
+  } else {
+    portfolio.classList.remove("portfolio-open");
+    portfolioContext.style.height = "0px";
+    portfolioContext.style.display = "none";
+    setTimeout(() => {
+      portfolioContext.style.marginTop = "0px";
     }, 150);
   }
 });
@@ -153,6 +196,7 @@ contactsClick.addEventListener("click", () => {
       contactsContext.style.display = "block";
       contactsContext.style.marginTop = "25px";
       aboutMeContext.style.marginTop = "0px";
+      portfolioContext.style.marginTop = "0px";
 
       setTimeout(() => {
         const offset =
@@ -163,9 +207,14 @@ contactsClick.addEventListener("click", () => {
         });
       }, 200);
     }, 150);
+
     aboutMe.classList.remove("about-me-open");
     aboutMeContext.style.height = "0px";
     aboutMeContext.style.display = "none";
+
+    portfolio.classList.remove("portfolio-open");
+    portfolioContext.style.height = "0px";
+    portfolioContext.style.display = "none";
   } else {
     contacts.classList.remove("contacts-open");
     contactsContext.style.height = "0px";
