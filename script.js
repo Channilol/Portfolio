@@ -121,7 +121,7 @@ aboutMeClick.addEventListener("click", () => {
         const offset =
           aboutMeClick.getBoundingClientRect().top + window.scrollY;
         window.scrollTo({
-          top: offset,
+          top: offset - 25,
           behavior: "smooth",
         });
       }, 200);
@@ -160,7 +160,7 @@ contactsClick.addEventListener("click", () => {
         const offset =
           contactsClick.getBoundingClientRect().top + window.scrollY;
         window.scrollTo({
-          top: offset,
+          top: offset - 25,
           behavior: "smooth",
         });
       }, 200);
