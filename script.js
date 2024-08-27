@@ -120,6 +120,22 @@ function onMouseUp() {
 
 //! SCROLL TO TOP
 
+function handleScroll() {
+  if (window.scrollY > 0) {
+    scrollDown.style.display = "none";
+    goUp.style.display = "flex";
+  } else {
+    scrollDown.style.display = "flex";
+    goUp.style.display = "none";
+  }
+}
+window.addEventListener("scroll", handleScroll);
+
+window.addEventListener("load", () => {
+  scrollToTop();
+  goUp.style.display = "none";
+});
+
 function scrollToTop() {
   window.scrollTo({
     top: 0,
@@ -162,6 +178,7 @@ aboutMeClick.addEventListener("click", () => {
     aboutMe.classList.add("about-me-open");
     aboutMeContext.style.height = "auto";
     setTimeout(() => {
+      aboutMeClick.innerHTML = 'about me <i class="bi bi-chevron-up"></i>'
       aboutMeContext.style.display = "block";
       aboutMeContext.style.marginTop = "25px";
       contactsContext.style.marginTop = "0px";
@@ -177,18 +194,21 @@ aboutMeClick.addEventListener("click", () => {
       }, 200);
     }, 150);
 
-    contacts.classList.remove("contacts-open");
-    contactsContext.style.height = "0px";
-    contactsContext.style.display = "none";
-
+    portfolioClick.innerHTML = 'portfolio'
     portfolio.classList.remove("portfolio-open");
     portfolioContext.style.height = "0px";
     portfolioContext.style.display = "none";
+
+    contactsClick.innerHTML = 'contacts'
+    contacts.classList.remove("contacts-open");
+    contactsContext.style.height = "0px";
+    contactsContext.style.display = "none";
   } else {
     aboutMe.classList.remove("about-me-open");
     aboutMeContext.style.height = "0px";
     aboutMeContext.style.display = "none";
     setTimeout(() => {
+      aboutMeClick.innerHTML = 'about me'
       aboutMeContext.style.marginTop = "0px";
     }, 150);
   }
@@ -201,7 +221,8 @@ portfolioClick.addEventListener("click", () => {
     portfolio.classList.add("portfolio-open");
     portfolioContext.style.height = "auto";
     setTimeout(() => {
-      portfolioContext.style.display = "block";
+      portfolioClick.innerHTML = 'portfolio <i class="bi bi-chevron-up"></i>'
+      portfolioContext.style.display = "flex";
       portfolioContext.style.marginTop = "25px";
       aboutMeContext.style.marginTop = "0px";
       contactsContext.style.marginTop = "0px";
@@ -216,18 +237,21 @@ portfolioClick.addEventListener("click", () => {
       }, 200);
     }, 150);
 
-    contacts.classList.remove("contacts-open");
-    contactsContext.style.height = "0px";
-    contactsContext.style.display = "none";
-
+    aboutMeClick.innerHTML = 'about me'
     aboutMe.classList.remove("about-me-open");
     aboutMeContext.style.height = "0px";
     aboutMeContext.style.display = "none";
+
+    contactsClick.innerHTML = 'contacts'
+    contacts.classList.remove("contacts-open");
+    contactsContext.style.height = "0px";
+    contactsContext.style.display = "none";
   } else {
     portfolio.classList.remove("portfolio-open");
     portfolioContext.style.height = "0px";
     portfolioContext.style.display = "none";
     setTimeout(() => {
+      portfolioClick.innerHTML = 'portfolio'
       portfolioContext.style.marginTop = "0px";
     }, 150);
   }
@@ -240,6 +264,7 @@ contactsClick.addEventListener("click", () => {
     contacts.classList.add("contacts-open");
     contactsContext.style.height = "auto";
     setTimeout(() => {
+      contactsClick.innerHTML = 'contacts <i class="bi bi-chevron-up"></i>'
       contactsContext.style.display = "block";
       contactsContext.style.marginTop = "25px";
       aboutMeContext.style.marginTop = "0px";
@@ -255,10 +280,12 @@ contactsClick.addEventListener("click", () => {
       }, 200);
     }, 150);
 
+    aboutMeClick.innerHTML = 'about me'
     aboutMe.classList.remove("about-me-open");
     aboutMeContext.style.height = "0px";
     aboutMeContext.style.display = "none";
 
+    portfolioClick.innerHTML = 'portfolio'
     portfolio.classList.remove("portfolio-open");
     portfolioContext.style.height = "0px";
     portfolioContext.style.display = "none";
@@ -267,19 +294,23 @@ contactsClick.addEventListener("click", () => {
     contactsContext.style.height = "0px";
     contactsContext.style.display = "none";
     setTimeout(() => {
+      contactsClick.innerHTML = 'contacts'
       contactsContext.style.marginTop = "0px";
     }, 150);
   }
 });
 
 //! EXPANDIBLE DIV
-const test = document.querySelector(".test");
+const projects = document.querySelectorAll('.project-div')
 const toExpand = document.querySelector(".toExpand");
 const body = document.querySelector("body");
 
-test.addEventListener("click", () => {
-  toExpand.style.animation = "toExpand 1s ease-in-out forwards";
-  setTimeout(() => {
-    body.style.overflow = "hidden";
-  }, 1000);
-});
+projects.forEach((e, index) => {
+  e.style.animationDelay = `${0.2 + index * 0.2}s`;
+  e.addEventListener('click', () => {
+    toExpand.style.animation = "toExpand 0.75s ease-in-out forwards";
+    setTimeout(() => {
+      body.style.overflow = "hidden";
+    }, 750);
+  });
+})
