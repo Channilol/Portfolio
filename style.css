@@ -194,14 +194,14 @@ body {
 }
 
 .hero-name {
-  animation: heroName 0.6s ease-in-out;
+  animation: heroName 1s ease-in-out;
   margin-bottom: 40px;
 }
 
 .hero-surname {
   /* letter-spacing: 1vw; */
   margin-top: 40px;
-  animation: heroSurname 0.6s ease-in-out;
+  animation: heroSurname 1s ease-in-out;
 }
 
 /* HERO SLIDER */

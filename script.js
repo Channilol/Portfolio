@@ -89,6 +89,16 @@ themeSwitcher.addEventListener("click", () => {
   }
 });
 
+//* SCROLL TO NAVBAR
+
+function scrollToNavbar() {
+  const navbar = document.querySelector("#page-navbar");
+  navbar.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
+}
+
 //* NAVBAR ITEMS
 
 const aboutMe = document.querySelector(".about-me");
@@ -110,12 +120,6 @@ aboutMeClick.addEventListener("click", () => {
       aboutMeContext.style.display = "block";
       aboutMeContext.style.marginTop = "25px";
       contactsContext.style.marginTop = "0px";
-
-      // Scroll verso il div "about-me" con un piccolo delay
-      aboutMeClick.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
 
       setTimeout(() => {
         const offset =
@@ -149,12 +153,6 @@ contactsClick.addEventListener("click", () => {
       contactsContext.style.display = "block";
       contactsContext.style.marginTop = "25px";
       aboutMeContext.style.marginTop = "0px";
-
-      // Scroll verso il div "about-me" con un piccolo delay
-      contactsClick.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
 
       setTimeout(() => {
         const offset =
