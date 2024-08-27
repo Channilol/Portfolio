@@ -117,13 +117,14 @@ aboutMeClick.addEventListener("click", () => {
         block: "start",
       });
 
-      // Aggiungi uno spostamento manuale di circa il 20% della viewport height
-      // setTimeout(() => {
-      //   window.scrollBy({
-      //     top: window.innerHeight * 0.2, // 20% dell'altezza della finestra
-      //     behavior: "smooth",
-      //   });
-      // }, 150);
+      setTimeout(() => {
+        const offset =
+          aboutMeClick.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: offset,
+          behavior: "smooth",
+        });
+      }, 200);
     }, 150);
     contacts.classList.remove("contacts-open");
     contactsContext.style.height = "0px";
@@ -154,6 +155,15 @@ contactsClick.addEventListener("click", () => {
         behavior: "smooth",
         block: "start",
       });
+
+      setTimeout(() => {
+        const offset =
+          contactsClick.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: offset,
+          behavior: "smooth",
+        });
+      }, 200);
     }, 150);
     aboutMe.classList.remove("about-me-open");
     aboutMeContext.style.height = "0px";
