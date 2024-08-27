@@ -183,7 +183,7 @@ body {
 
 .hero-title {
   display: inline-block;
-  font-size: 10vw;
+  font-size: 14vw;
   user-select: none;
   white-space: nowrap;
   font-family: var(--small-font);
@@ -293,6 +293,8 @@ body {
   transition: margin-top 0.2s ease-in-out;
 }
 
+/* about me */
+
 .about-me-open {
   height: 875px;
   padding: 10px 0;
@@ -318,6 +320,72 @@ body {
   color: var(--beige);
   background-color: var(--black);
   cursor: none;
+}
+
+/* contacts */
+
+.contacts {
+  box-sizing: border-box;
+}
+
+.contacts h3 {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.contacts-open {
+  height: 800px;
+  padding: 10px 0;
+}
+
+.contacts-context h2 {
+  margin-bottom: 25px;
+}
+
+.contacts-context ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  justify-content: space-around;
+}
+
+.contacts-context ul li a,
+.contacts-email {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 9px;
+  transition: 0.2s ease-in-out;
+  font-weight: 600;
+}
+
+.contacts-context ul li a i {
+  font-size: 75px;
+}
+
+.contacts-li,
+.contacts-email {
+  color: var(--beige);
+}
+
+.contacts-context ul li a:hover {
+  background-color: var(--black);
+}
+
+.contacts-context ul li .contacts-li:hover {
+  color: var(--beige);
+}
+
+.contacts:hover .contacts-li,
+.contacts:hover .contacts-email {
+  color: var(--black);
+}
+
+.contacts-context p {
+  text-align: center;
+  margin: 20px 0;
 }
 
 /* ************* FOOTER ************* */
@@ -358,10 +426,25 @@ footer {
   .about-me-open {
     height: 650px;
   }
+  .contacts-open {
+    height: 450px;
+    padding: 10px 0;
+  }
+  .contacts-context ul {
+    flex-direction: row;
+  }
 }
 
 /* Extra large */
 @media screen and (min-width: 1200px) {
+  .hero-title {
+    font-size: 12vw;
+  }
+  .about-me-click,
+  .portfolio-click,
+  .contacts-click {
+    font-size: 75px;
+  }
 }
 
 /* Desktop */
@@ -375,5 +458,9 @@ footer {
   .about-me-open {
     height: 550px;
     padding: 10px 0;
+  }
+
+  .hero-title {
+    font-size: 10vw;
   }
 }

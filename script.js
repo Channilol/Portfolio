@@ -95,6 +95,10 @@ const aboutMe = document.querySelector(".about-me");
 const aboutMeClick = document.querySelector(".about-me-click");
 const aboutMeContext = document.querySelector(".about-me-context");
 
+const contacts = document.querySelector(".contacts");
+const contactsClick = document.querySelector(".contacts-click");
+const contactsContext = document.querySelector(".contacts-context");
+
 aboutMeClick.addEventListener("click", () => {
   // Usa getComputedStyle per ottenere lo stile attuale
   const aboutMeContextDisplay = getComputedStyle(aboutMeContext).display;
@@ -105,13 +109,41 @@ aboutMeClick.addEventListener("click", () => {
     setTimeout(() => {
       aboutMeContext.style.display = "block";
       aboutMeContext.style.marginTop = "25px";
+      contactsContext.style.marginTop = "0px";
     }, 150);
+    contacts.classList.remove("contacts-open");
+    contactsContext.style.height = "0px";
+    contactsContext.style.display = "none";
   } else {
     aboutMe.classList.remove("about-me-open");
     aboutMeContext.style.height = "0px";
     aboutMeContext.style.display = "none";
     setTimeout(() => {
       aboutMeContext.style.marginTop = "0px";
+    }, 150);
+  }
+});
+
+contactsClick.addEventListener("click", () => {
+  const contactsContextDisplay = getComputedStyle(contactsContext).display;
+
+  if (contactsContextDisplay === "none") {
+    contacts.classList.add("contacts-open");
+    contactsContext.style.height = "auto";
+    setTimeout(() => {
+      contactsContext.style.display = "block";
+      contactsContext.style.marginTop = "25px";
+      aboutMeContext.style.marginTop = "0px";
+    }, 150);
+    aboutMe.classList.remove("about-me-open");
+    aboutMeContext.style.height = "0px";
+    aboutMeContext.style.display = "none";
+  } else {
+    contacts.classList.remove("contacts-open");
+    contactsContext.style.height = "0px";
+    contactsContext.style.display = "none";
+    setTimeout(() => {
+      contactsContext.style.marginTop = "0px";
     }, 150);
   }
 });
