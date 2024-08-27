@@ -20,7 +20,7 @@
 body {
   background-color: var(--black);
   min-height: 100vh;
-  width: 100vw;
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -116,7 +116,7 @@ body {
 .scroll-down {
   position: absolute;
   bottom: 40px;
-  right: 50%;
+  left: 50%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
@@ -183,8 +183,7 @@ body {
 
 .hero-title {
   display: inline-block;
-  font-size: 200px;
-
+  font-size: 10vw;
   user-select: none;
   white-space: nowrap;
   font-family: var(--small-font);
@@ -197,7 +196,7 @@ body {
 }
 
 .hero-surname {
-  letter-spacing: 1vw;
+  /* letter-spacing: 1vw; */
   animation: heroSurname 0.6s ease-in-out;
 }
 
@@ -282,11 +281,16 @@ body {
 .about-me-context,
 .portfolio-context,
 .contacts-context {
-  width: 60%;
+  width: 90%;
   display: none;
   text-align: start;
   transition: 0.1s ease-in-out;
   transition: margin-top 0.2s ease-in-out;
+}
+
+.about-me-open {
+  height: 900px;
+  padding: 10px 0;
 }
 
 .about-me-context button {
@@ -321,4 +325,50 @@ footer {
   align-items: center;
   justify-content: center;
   border-top: 2px solid var(--beige);
+}
+
+/* ************* MEDIA QUERIES ************* */
+
+/* Small */
+@media screen and (min-width: 576px) {
+  .about-me-open {
+    height: 825px;
+  }
+}
+
+/* Medium */
+@media screen and (min-width: 768px) {
+  .about-me-open {
+    height: 725px;
+  }
+}
+
+/* Large */
+@media screen and (min-width: 992px) {
+  .about-me-context,
+  .portfolio-context,
+  .contacts-context {
+    width: 80%;
+  }
+  .about-me-open {
+    height: 650px;
+  }
+}
+
+/* Extra large */
+@media screen and (min-width: 1200px) {
+}
+
+/* Desktop */
+@media screen and (min-width: 1400px) {
+  .about-me-context,
+  .portfolio-context,
+  .contacts-context {
+    width: 60%;
+  }
+
+  .about-me-open {
+    height: 550px;
+    padding: 10px 0;
+  }
 }

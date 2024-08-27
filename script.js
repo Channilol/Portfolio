@@ -100,14 +100,14 @@ aboutMeClick.addEventListener("click", () => {
   const aboutMeContextDisplay = getComputedStyle(aboutMeContext).display;
 
   if (aboutMeContextDisplay === "none") {
-    aboutMe.style.height = "550px";
+    aboutMe.classList.add("about-me-open");
     aboutMeContext.style.height = "auto";
     setTimeout(() => {
       aboutMeContext.style.display = "block";
       aboutMeContext.style.marginTop = "25px";
     }, 150);
   } else {
-    aboutMe.style.height = "90px";
+    aboutMe.classList.remove("about-me-open");
     aboutMeContext.style.height = "0px";
     aboutMeContext.style.display = "none";
     setTimeout(() => {
