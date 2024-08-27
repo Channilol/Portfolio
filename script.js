@@ -110,6 +110,12 @@ aboutMeClick.addEventListener("click", () => {
       aboutMeContext.style.display = "block";
       aboutMeContext.style.marginTop = "25px";
       contactsContext.style.marginTop = "0px";
+
+      // Scroll verso il div "about-me" con un piccolo delay
+      aboutMeContext.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
     }, 150);
     contacts.classList.remove("contacts-open");
     contactsContext.style.height = "0px";
@@ -134,6 +140,11 @@ contactsClick.addEventListener("click", () => {
       contactsContext.style.display = "block";
       contactsContext.style.marginTop = "25px";
       aboutMeContext.style.marginTop = "0px";
+
+      // Scroll verso il div "about-me" con un piccolo delay
+      contactsContext.scrollIntoView({
+        behavior: "smooth",
+      });
     }, 150);
     aboutMe.classList.remove("about-me-open");
     aboutMeContext.style.height = "0px";
