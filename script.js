@@ -112,10 +112,18 @@ aboutMeClick.addEventListener("click", () => {
       contactsContext.style.marginTop = "0px";
 
       // Scroll verso il div "about-me" con un piccolo delay
-      aboutMeContext.scrollIntoView({
+      aboutMeClick.scrollIntoView({
         behavior: "smooth",
-        block: "center",
+        block: "start",
       });
+
+      // Aggiungi uno spostamento manuale di circa il 20% della viewport height
+      // setTimeout(() => {
+      //   window.scrollBy({
+      //     top: window.innerHeight * 0.2, // 20% dell'altezza della finestra
+      //     behavior: "smooth",
+      //   });
+      // }, 150);
     }, 150);
     contacts.classList.remove("contacts-open");
     contactsContext.style.height = "0px";
@@ -142,8 +150,9 @@ contactsClick.addEventListener("click", () => {
       aboutMeContext.style.marginTop = "0px";
 
       // Scroll verso il div "about-me" con un piccolo delay
-      contactsContext.scrollIntoView({
+      contactsClick.scrollIntoView({
         behavior: "smooth",
+        block: "start",
       });
     }, 150);
     aboutMe.classList.remove("about-me-open");
